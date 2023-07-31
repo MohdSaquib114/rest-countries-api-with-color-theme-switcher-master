@@ -9,11 +9,12 @@
 font-family: 'Nunito Sans', sans-serif;
 
   }
-  form{
+  .form{
     padding: 2rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    gap: 1rem;
 
 
   }
@@ -32,6 +33,7 @@ font-family: 'Nunito Sans', sans-serif;
     padding: 15px;
     box-shadow: 0 .05rem 15px .1px black;
     background-color: #fff;
+    min-width: 100%;
   }
   .header>h1{
     font-size: 2rem;
@@ -97,17 +99,24 @@ gap :1rem;
     border:1px solid grey ;
     border-radius: .5rem;
     transform: translateY(-125px) scaleY(0);
-  
+  text-align: left;
+  /* padding-left: 1rem; */
    transition: all  .5s;
   
   
 
      }
-
-     .drop-down>li{
-        margin: 1rem ;
+   
+    
+    
+    .drop-down>li{
+     padding: 1rem;
+      cursor: pointer;
         font-size: 1.3rem
         /* display: none; */
+     }
+     .drop-down>li:hover{
+      border: 2px solid;
      }
      .menu-down{
        
@@ -115,9 +124,10 @@ gap :1rem;
        
      }
     .country-card{
-    width:350px;
-    
-       height: 450px;
+       min-height: 450px;
+       max-height: 350px;
+       min-width: 300px;
+       max-width: 200px;
        background-position: top;
        background-repeat: no-repeat;
        background-size: contain;
@@ -127,14 +137,32 @@ gap :1rem;
        display: grid;
       align-content: end;
       font-size: 1.2rem;
-      padding-bottom: 1rem;
-      padding-left: 2rem;
+      place-items: center;
+     animation: fadeIn 2s;
+     
+      
     }
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+   
     .country-card>p{
         margin: .5rem 0;
     }
     .country-card>h2{
         margin-bottom: .5rem;
+    }
+    .main{
+        /* display: grid;
+        grid-template-columns: repeat(4,1fr); */
+        display: flex;
+        flex-flow: row wrap;
+       justify-content: center;
+       /* padding: .5rem; */
+         row-gap: 5rem;
+         column-gap: 3rem;
+        margin-top: 4rem;
     }
 
 
@@ -153,17 +181,20 @@ gap :1rem;
     max-width: 100%;
    }
     
-   form{
+   .form{
     flex-direction: column;
-    gap: 3rem;
+   padding: 1rem;
+   row-gap: 1rem;
    }
    .drop-down-btn{
     width: 200px;
     font-size: 1rem;
     }
+  
+ 
+    .country-card{
+        padding: 0;
+        min-width: 100%;
+    }
   }
  
-  @media (min-width:375px) {
-  
-    
-  }

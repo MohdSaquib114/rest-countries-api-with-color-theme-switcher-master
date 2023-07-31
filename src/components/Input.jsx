@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
+import { useContextData } from './Context'
 
 export default function Input() {
     const [isClicked,setClicked] =useState(true)
+    const {countryData} = useContextData()
+  const regions = Array.from(new Set(countryData.map(country=> country.region)))
+
+   
+  
     const dropDownHandler = ()=>{
         setClicked(!isClicked)
     }
   return (
-    <form onSubmit={(e)=>{
+    <form className='form' onSubmit={(e)=>{
         e.preventDefault()
        
     }}>
@@ -26,11 +32,7 @@ export default function Input() {
             </svg> 
         </button>
         <ul className={`drop-down ${isClicked?'':'menu-down'}`}>
-            <li>America</li>
-            <li>Aisa</li>
-            <li>Ausdfd</li>
-            <li>cfd</li>
-            <li>dfdg</li>
+            {regions.map(region=><li key={region+Math.random()}>{region}</li>)}
         </ul>
      </div>
     </form>
