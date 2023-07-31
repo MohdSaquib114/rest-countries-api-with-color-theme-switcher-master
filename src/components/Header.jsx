@@ -1,8 +1,10 @@
 import React from 'react'
-// import moon from '../Assests/moon.png'
+import { useContextData } from './Context'
 
-export default function Header({iseDark,setDark}) {
-const themeHandler=()=> setDark(!iseDark)
+
+export default function Header() {
+  const {themeChanger,setTheme} = useContextData()
+const themeHandler=()=> setTheme(!themeChanger)
   return (
     <header className='header'>
       <h1>Where in the world?</h1>

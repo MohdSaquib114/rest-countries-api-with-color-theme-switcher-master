@@ -2,7 +2,11 @@ import { createContext, useContext, useEffect, useState } from 'react'
 const ContextProvider = createContext();
 function Context({children}) {
     const [countryData,setData] =useState([])
+    const [filter,setFilter] =useState('')
+    const [searchValue,setSearch] = useState('')
+    const [themeChanger, setTheme ] = useState(false);
     
+  
     useEffect(()=>{
         async function getCountryData(){
           const res = await fetch("http://localhost:9000/countries");
@@ -14,9 +18,19 @@ function Context({children}) {
       },[])
 
    
-  return <ContextProvider.Provider value={{countryData}}>
-    {children}
-  </ContextProvider.Provider>
+  return <ContextProvider.Provider value={
+            {countryData,
+             filter,
+             setFilter,
+             searchValue,
+             setSearch,
+             themeChanger,
+             setTheme}
+        }>
+
+             {children}
+
+        </ContextProvider.Provider>
 }
 const useContextData = ()=>{
     const data = useContext(ContextProvider)

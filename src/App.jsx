@@ -8,10 +8,7 @@ import { Context } from './components/Context';
 export default function App() {
   const [iseDark, setDark ] = useState(false);
   
-  useEffect(()=>{
-    document.documentElement.classList.toggle('dark-mode')
-  
-  },[iseDark])
+ 
  
 
   return (

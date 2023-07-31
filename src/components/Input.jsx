@@ -3,10 +3,16 @@ import { useContextData } from './Context'
 
 export default function Input() {
     const [isClicked,setClicked] =useState(true)
-    const {countryData} = useContextData()
+    const {countryData,setFilter,searchValue,setSearch} = useContextData()
   const regions = Array.from(new Set(countryData.map(country=> country.region)))
-
+   const inputHandler = (e)=>{
+    setSearch(e.target.value)
    
+   }
+   const regionSelector = (e)=>{
+    setClicked(!isClicked)
+    setFilter(e.target.innerHTML)
+   }
   
     const dropDownHandler = ()=>{
         setClicked(!isClicked)
@@ -20,7 +26,7 @@ export default function Input() {
         <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
-      <input className='search' type="text" placeholder='Search for a country' />
+      <input className='search' type="text" placeholder='Search for a country' value={searchValue} onChange={inputHandler}/>
       </div>
      <div>
         <button className='drop-down-btn' onClick={dropDownHandler}> <p>Filter by Region</p>
@@ -31,7 +37,7 @@ export default function Input() {
              </g>
             </svg> 
         </button>
-        <ul className={`drop-down ${isClicked?'':'menu-down'}`}>
+        <ul onClick={regionSelector} className={`drop-down ${isClicked?'':'menu-down'}`}>
             {regions.map(region=><li key={region+Math.random()}>{region}</li>)}
         </ul>
      </div>
