@@ -6,19 +6,26 @@ export default function CountryList() {
 const {countryData,filter,searchValue} = useContextData();
 const newSearch = searchValue.toLowerCase();
 
+if(countryData.length === 0) return  <main className='main'>
+<h1 className='loading'>Loading...</h1>
+</main>
 
-if(filter !== '') return <main className='main'>
+else if(searchValue !== ''&& filter !== '') return  <main className='main'>
+{countryData.filter(country=>country.name.toLowerCase().includes(newSearch)).map((country,i)=><Country index={i} key={country?.alpha3code+country.name} flag={country.flags.png} name={country?.name} region={country?.region} population={country.population} capital={country.capital} />)}
+</main>
+
+else if(filter !== '') return <main className='main'>
 {countryData.filter(country=>country.region === filter).map(country=><Country key={country?.alpha3code+country.name} flag={country.flags.png} name={country?.name} region={country?.region} population={country.population} capital={country.capital} />)}
 </main>
 
 
-if(searchValue !== '') return  <main className='main'>
-{countryData.filter(country=>country.name.toLowerCase().includes(newSearch)).map(country=><Country key={country?.alpha3code+country.name} flag={country.flags.png} name={country?.name} region={country?.region} population={country.population} capital={country.capital} />)}
+else if(searchValue !== '') return  <main className='main'>
+{countryData.filter(country=>country.name.toLowerCase().includes(newSearch)).map((country,i)=><Country index={i} key={country?.alpha3code+country.name} flag={country.flags.png} name={country?.name} region={country?.region} population={country.population} capital={country.capital} />)}
 </main>
 
-return (
+else return (
     <main className='main'>
-      {countryData.map(country=><Country key={country?.alpha3code+country.name} flag={country.flags.png} name={country?.name} region={country?.region} population={country.population} capital={country.capital} />)}
+      {countryData.map((country,i)=><Country index={i} key={country?.alpha3code+country.name} flag={country.flags.png} name={country?.name} region={country?.region} population={country.population} capital={country.capital} />)}
     </main>
   )
 }

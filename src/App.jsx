@@ -1,22 +1,29 @@
-import  { useEffect, useState } from 'react'
-import Header from './components/Header';
-import Input from './components/Input'
-
-import CountryList from './components/CountryList';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Context } from './components/Context';
 
+import Header from './components/Header';
+import CountryInfo from './Pages/CountryInfo';
+import Home from './Pages/Home';
+
+
+
+
+
 export default function App() {
-  const [iseDark, setDark ] = useState(false);
-  
+
  
  
 
   return (
     <section>
       <Context>
-      <Header iseDark={iseDark} setDark={setDark}/>
-      <Input />
-      <CountryList />
+      <Header />
+    <BrowserRouter>
+    <Routes>
+      <Route  path='/' element={<Home />}/>
+      <Route path=':name' element={<CountryInfo />} />
+    </Routes>
+    </BrowserRouter>
       </Context>
 
     </section>

@@ -140,8 +140,15 @@ gap :1rem;
       font-size: 1.2rem;
       place-items: center;
      animation: fadeIn 2s;
+     cursor: pointer;
+     text-decoration: none;
+     color: black;
      
       
+    }
+    .flag-img{
+      width: 500px;
+      height: 300px;
     }
     @keyframes fadeIn {
         0% { opacity: 0; }
@@ -165,6 +172,85 @@ gap :1rem;
          column-gap: 3rem;
         margin-top: 4rem;
     }
+.back-btn{
+  background-color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  width: 180px;
+  height: 60px;
+  justify-content: center;
+padding-right: 1.5rem;
+gap: 1rem;
+border-radius: .3rem;
+border: none;
+box-shadow: 0 0 1rem .1rem black;
+ grid-area: btn;
+color: black;
+text-decoration: none;
+}
+.back-btn>p{
+  align-self: center;
+}
+.back-btn>svg{
+  align-self: center;
+}
+.btn{
+  text-decoration: none;
+  color: black;
+  background-color: #fff;
+  font-size: 1.5rem;
+  border-radius: .3rem;
+border: none;
+box-shadow: 0 0 1rem .1rem black;
+padding:.2rem .5rem;
+
+
+}
+
+.country-detail{
+  display: grid;
+  width: 100%;
+  padding: 3rem;
+  grid-template-areas: "btn btn"
+                        "img article";
+  gap: 2rem;
+}
+.article{
+  grid-area: article;
+display: grid;
+/* grid-template-areas: 'heading extrainfo'
+                       'borders borders'; */
+  /* width: 50%; */
+  
+}
+.article>h1{
+  font-size: 3rem;
+}
+.article p{
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+.container{
+  display:flex;
+  gap: 6rem;
+}
+
+.borders{
+ 
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.loading{
+  font-size: 2.5rem;
+  font-weight: 400;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(50%-50px) translateY(50%-50px);
+}
+
 
 
 @media (max-width:375px) {
@@ -197,5 +283,63 @@ gap :1rem;
         padding: 0;
         min-width: 100%;
     }
+    .country-detail{
+      grid-template-areas: "btn"
+      "img"
+      "article";
+      padding: 0;
+    }
+    .article>h1{
+      line-height: 6rem;
+    }
+    .container{
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .borders{
+    
+    }
+    .back-btn{
+      width: 140px;
+      
+    }
+
   }
  
+  @media (max-width:860px) {
+    .article>h1{
+      font-size: 2rem;
+    }
+    .country-detail{
+      grid-template-areas: "btn"
+      "img"
+      "article";
+    
+      /* padding: 0; */
+    }
+  }
+  @media (max-width:680px) {
+    .container{
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .header>h1{
+      font-size: 1rem;
+    }
+    .header>button{
+      font-size: 1rem;
+    }
+    .back-btn{
+      width: 140px;
+      height: 40px;
+    }
+    .flag-img{
+      width: 350px;
+      height: 200px;
+    }
+    .loading{
+      font-size: 2rem;
+    }
+    
+  }

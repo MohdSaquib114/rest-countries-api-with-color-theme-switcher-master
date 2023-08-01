@@ -6,6 +6,7 @@ function Context({children}) {
     const [searchValue,setSearch] = useState('')
     const [themeChanger, setTheme ] = useState(false);
     
+    
   
     useEffect(()=>{
         async function getCountryData(){
@@ -20,12 +21,14 @@ function Context({children}) {
    
   return <ContextProvider.Provider value={
             {countryData,
+              setData,
              filter,
              setFilter,
              searchValue,
              setSearch,
              themeChanger,
-             setTheme}
+             setTheme,
+            }
         }>
 
              {children}
