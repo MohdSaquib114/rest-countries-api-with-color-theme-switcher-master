@@ -15,7 +15,7 @@ export default function App() {
  
 
   return (
-    <section>
+
       <Context>
       <Header />
     <BrowserRouter>
@@ -26,6 +26,6 @@ export default function App() {
     </BrowserRouter>
       </Context>
 
-    </section>
+
   )
 }

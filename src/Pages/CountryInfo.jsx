@@ -6,7 +6,7 @@ import { useContextData } from '../components/Context'
 export default function CountryInfo() {
   const {name}= useParams()
   
-  const {countryData} = useContextData();
+  const {countryData,themeChanger} = useContextData();
   
   if(countryData.length===0 ) return <h1 className='loading'>Loading...</h1>
   const [country] = countryData.filter(country=>country.name===name)
@@ -19,13 +19,13 @@ export default function CountryInfo() {
   const noBorder =`It's seem like ${name} has no neighbours`
   const capital = country.capital!== undefined?country?.capital: `Oops! ${name} has no capital`
   
-  console.log(capital)
+  
  
  
   return (
-    <main className='country-detail'>
+    <main className={`country-detail ${themeChanger?'dark-detail-theme':''}`}>
          <BackBtn />
-        <img className='flag-img' src={country?.flag|| country?.flags.svg } alt="" />
+        <img className={`flag-img ${themeChanger?'dark-flag-img':'light-flag-img'}`} src={country?.flags?.png } alt="" />
         <article className='article'>
             <h1>{country?.name}</h1>
             <div className='container'>
@@ -46,7 +46,7 @@ export default function CountryInfo() {
                 <p>Borders:</p>
             <div className='borders'>
               {borders.length === 0?<h3>{noBorder}</h3>:
-                borders?.map(borderName => <Link to={`/${borderName}`} key={borderName+Math.random()} className='btn'>{borderName}</Link> )}
+                borders?.map(borderName => <Link to={`/${borderName}`} key={borderName+Math.random()} className={`btn ${themeChanger?'dark-border-btn':''}`}>{borderName}</Link> )}
               
                 </div>
            

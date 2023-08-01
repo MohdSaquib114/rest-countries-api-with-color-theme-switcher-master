@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Nunito+Sans:opsz,wght@6..12,500&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .2s;
+  
+  }
+  html{
+    height: 100%;
+  }
+ 
+body{
+    font-family: 'Bellefair', serif;
+font-family: 'Nunito Sans', sans-serif;
+min-height: 100vh;
+
+  }
+  #root{
+    min-height: inherit;
+    
+}
