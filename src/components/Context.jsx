@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 const ContextProvider = createContext();
+const URL = 'https://rest-countries-api-k3jv.onrender.com/'
 function Context({children}) {
     const [countryData,setData] =useState([])
     const [filter,setFilter] =useState('')
@@ -10,7 +11,7 @@ function Context({children}) {
   
     useEffect(()=>{
         async function getCountryData(){
-          const res = await fetch("http://localhost:8000/v1/api/countries");
+          const res = await fetch(`${URL}v1/api/countries`);
           const data = await res.json();
           setData(JSON.parse(data))
  
